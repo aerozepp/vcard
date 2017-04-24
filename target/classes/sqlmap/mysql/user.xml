@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="user">
+	
+	
+	<insert id="insertUser">
+     	
+     <![CDATA[
+        INSERT INTO USERS
+     
+        VALUES
+        (
+          USERINDEX.NEXTVAL,
+            #{username},
+            #{passwd},
+            'ROLE_USER',
+            1,
+            0,
+            0
+        )
+    ]]>
+	</insert>
+	<select id="selectUser" resultType="map">
+		
+		<![CDATA[
+			SELECT USERNAME as username,
+					PASS as passwd,
+					AUTHORITY as authority,
+					ENABLED as enabled
+					
+			FROM USERS 
+			
+			WHERE USERNAME = #{username}
+		]]>
+	</select>
+
+</mapper>
+
+
